@@ -1,0 +1,5 @@
+baseURL: https://amethyst.bencuan.me
+
+# Book configuration
+disablePathToLower: true
+enableGitInfo: true
