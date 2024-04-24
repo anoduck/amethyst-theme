@@ -1,4 +1,4 @@
-module github.com/64bitpandas/amethyst
+module github.com/anoduck/amethyst-theme
 
 go 1.16
 
