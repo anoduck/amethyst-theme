@@ -44,6 +44,10 @@ Keep reading if you want to help develop Amethyst, or make changes to the code b
 - **Hugo-obsidian:** Run `go install github.com/jackyzha0/hugo-obsidian@latest`.
   - If you're getting a `command not found` error, [ensure that your PATH is configured properly so that binaries in the GOPATH can be executed](https://stackoverflow.com/questions/21001387/how-do-i-set-the-gopath-environment-variable-on-ubuntu-what-file-must-i-edit).
 
+## Installation
+
+The repository was restructured by [Anoduck](https://github.com/anoduck) to align that of modern hugo theme repositories, i.e. it includes an exampleSite directory and should now function from the themes folder of your hugo site repository. If you experience any issue, which are a possibility, do not hesitate to open an issue at [amethyst-theme issues](https://github.com/anoduck/amethyst-theme/issues).
+
 ## Live Server
 
 Start the live server using `make serve`. Content will be served to `localhost:1313` by default.
