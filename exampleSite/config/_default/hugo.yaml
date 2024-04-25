@@ -1,5 +1,15 @@
-baseURL: https://amethyst.bencuan.me
+# baseURL: https://amethyst.bencuan.me
+theme: 
+  - amethyst
 
 # Book configuration
 disablePathToLower: true
-enableGitInfo: true
+
+security:
+  enableInlineShortcodes: 
+
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: -1

@@ -3,9 +3,13 @@
 {{ with .Get "href" }}
   {{ $ref = . }}
   {{ $target = "_blank" }}
+{{ else }}
+  {{ errorf "The %q shortcode requires a 'href' parameter. See %s" .Name .Position }}
 {{ end }}
 {{ with .Get "relref" }}
   {{ $ref = relref $ . }}
+{{ else }}
+  {{ errorf "The %q shortcode requires a 'relref' parameter. See %s" .Name .Position }}
 {{ end }}
 <a {{ with $ref }} href="{{.}}" {{ end }} {{ with $target }} target="{{.}}" rel="noopener" {{ end }} class="book-btn{{ with .Get "class" }} {{ . }}{{ end }}">
   {{ .Inner | .Page.RenderString }}

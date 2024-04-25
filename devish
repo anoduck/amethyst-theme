@@ -148,8 +148,9 @@ function do_pump() {
   fi
   sver
   if [[ "$VERSET" == true ]]; then 
-    cd "$site_dir/themes/amethyst" || return
+    cd "$site_dir" || return
     if [[ -f "./SITE" ]] && [[ -s "$./SITE" ]]; then
+      cd themes/amethyst || return
       git pull
     fi
   else
