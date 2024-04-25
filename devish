@@ -147,9 +147,9 @@ function do_pump() {
     echo "Failed to find theme directory"
   fi
   sver
-  if [[ "$VERSET" == true ]]; then 
+  if [[ "$VERSET" == true ]]; then
     cd "$site_dir" || return
-    if [[ -f "./SITE" ]] && [[ -s "$./SITE" ]]; then
+    if [[ -f "./SITE" ]] && [[ -s "./SITE" ]]; then
       cd themes/amethyst || return
       git pull
     fi
@@ -169,7 +169,10 @@ function do_phold() {
 function do_synconf() {
   IO:log "synconf"
   cp "$theme_dir/config/_default/*" "$theme_dir/exampleSite/config/_default/"
-  cp "$theme_dir/config/_default/*" "$site_dir/config/_default/"
+  do_pump
+  if [[ $do_pump ]]; then
+    cp "$site_dir/themes/amethyst/exampleSite/config/_default/*" "$site_dir/config/_default/"
+  fi
 }
 
 function do_serve() {
