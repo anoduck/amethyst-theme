@@ -144,7 +144,7 @@ function do_pump() {
   else
     echo "Failed to find theme directory"
   fi
-  [[ "$SETVER" ]] || cd "$site_dir/themes/amethyst" || return
+  [[ "$sver" ]] || cd "$site_dir/themes/amethyst" || return
   if [[ -f "./SITE" ]] && [[ -s "$./SITE" ]]; then
     git pull
   fi
