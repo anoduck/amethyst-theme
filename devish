@@ -124,6 +124,7 @@ function Script:main() {
 sver() {
   SETVER=$(which setver)
   "$SETVER" new patch
+  VERSET=true
 }
 
 #####################################################################
@@ -137,6 +138,7 @@ function do_pump() {
   # Os:require "convert" "imagemagick"
   # Os:require "IO:progressbar" "basher install pforret/IO:progressbar"
   # (code)
+  VERSET=false
   cd "$theme_dir" || return
   if [[ -f "./THEME" ]] && [[ -s "./THEME" ]]; then
     TVER=$(cat "VERSION.md")
@@ -144,10 +146,14 @@ function do_pump() {
   else
     echo "Failed to find theme directory"
   fi
-  scver=$(sver)
-  [[ $scver ]] || cd "$site_dir/themes/amethyst" || return
-  if [[ -f "./SITE" ]] && [[ -s "$./SITE" ]]; then
-    git pull
+  sver
+  if [[ "$VERSET" == true ]]; then 
+    cd "$site_dir/themes/amethyst" || return
+    if [[ -f "./SITE" ]] && [[ -s "$./SITE" ]]; then
+      git pull
+    fi
+  else
+    echo "Set Version failed to bump patch"
   fi
 }
 
