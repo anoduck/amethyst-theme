@@ -53,7 +53,7 @@ option|l|log_dir|folder for log files |$HOME/log/$script_prefix
 option|t|tmp_dir|folder for temp files|/tmp/$script_prefix
 option|T|theme_dir|Theme dir external to site dir|$HOME/Sandbox/amethyst-theme
 option|S|site_dir|Site dir hosting your site|$HOME/Sandbox/amethyst-site
-choice|1|action|action to perform|pump,serve,synconf,check,env,update
+choice|1|action|action to perform|pump,phold,serve,synconf,check,env,update
 param|?|input|input file/text
 " -v -e '^#' -e '^\s*$'
 }
@@ -72,6 +72,12 @@ function Script:main() {
       #TIP: use «$script_prefix pump» to commit changes to theme and then pull those changes to the site dir.
       #TIP:> $script_prefix pump -S $site_dir -T $theme_dir
       do_pump
+      ;;
+
+    phold)
+      #TIP: use <<$script_prefix phold>> to generate the needed placeholder files for pump.
+      #TIP:> $script_prefix phold -S $site_dir -T $theme_dir
+      do_phold
       ;;
 
     serve)
@@ -111,6 +117,15 @@ function Script:main() {
   #TIP: >>> for bash development, also check out «pforret/setver» and «pforret/progressbar»
 }
 
+######################################################################
+# Place your functions here
+######################################################################
+
+sver() {
+  SETVER=$(which setver)
+  "$SETVER" new patch
+}
+
 #####################################################################
 ## Put your helper scripts here
 #####################################################################
@@ -123,11 +138,24 @@ function do_pump() {
   # Os:require "IO:progressbar" "basher install pforret/IO:progressbar"
   # (code)
   cd "$theme_dir" || return
-  TVER=$(cat "VERSION.md")
-  git add . && git commit -am "Development Changes $TVER" && git push
-  ~/bin/setver new patch
-  cd "$site_dir/themes/amethyst" || return
-  git pull
+  if [[ -f "./THEME" ]] && [[ -s "./THEME" ]]; then
+    TVER=$(cat "VERSION.md")
+    git add . && git commit -am "Development Changes $TVER" && git push
+  else
+    echo "Failed to find theme directory"
+  fi
+  [[ "$SETVER" ]] || cd "$site_dir/themes/amethyst" || return
+  if [[ -f "./SITE" ]] && [[ -s "$./SITE" ]]; then
+    git pull
+  fi
+}
+
+function do_phold() {
+  IO:log "phold"
+  cd "$theme_dir" || return
+  head -c 12k < /dev/zero >THEME
+  cd "$site_dir" || return
+  head -c 12k < /dev/zero >SITE
 }
 
 function do_synconf() {
