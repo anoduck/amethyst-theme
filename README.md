@@ -16,7 +16,7 @@ Amethyst is an attempt to deliver this by combining the navigational features of
 
 Amethyst preserves most of the features of quartz and hugo-book, including:
  - Navigation sidebars on left and right of content
- - Obsidian-style callouts 
+ - Obsidian-style callouts
  - Interactive graph view
  - MermaidJS charts
  - User-togglable dark mode
@@ -39,7 +39,7 @@ Keep reading if you want to help develop Amethyst, or make changes to the code b
 ## Requirements
 
 - **Go 1.16 or higher**: [installation instructions](https://golang.org/doc/install)
-- **Hugo 0.93 or higher:** [installation instructions](https://gohugo.io/getting-started/installing/) 
+- **Hugo 0.93 or higher:** [installation instructions](https://gohugo.io/getting-started/installing/)
   - If installing on Ubuntu/Debian-based systems, this is a higher version than is available in apt at the time of writing. Install the extended version from the [releases page](https://github.com/gohugoio/hugo/releases) instead.
 - **Hugo-obsidian:** Run `go install github.com/jackyzha0/hugo-obsidian@latest`.
   - If you're getting a `command not found` error, [ensure that your PATH is configured properly so that binaries in the GOPATH can be executed](https://stackoverflow.com/questions/21001387/how-do-i-set-the-gopath-environment-variable-on-ubuntu-what-file-must-i-edit).
@@ -162,6 +162,15 @@ If you want lower maintenance, use one of the released versions. If you want to 
 ## Contributing
 
 Contributions are welcome! Please make an issue or pull request if there are any changes you'd like to see.
+
+## Things to fix:
+
+- [ ] Interactive Graph Missing
+- [ ] Unify `/docs` and `/quartz` partials into one homogenous partial directory.
+- [ ] Creation of css partial to load css, rather than having it dumped in the user's assets folder
+- [ ] Ditto for JavaScript.
+- [ ] configure a hook for hugo to run obsidian-hugo automatically before build.
+- [ ] And many more...
 
 ## Credits
 
