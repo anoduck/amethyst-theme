@@ -1,9 +1,9 @@
 menu:
-	before:
-		- name: "Sample"
-		  url: "https://github.com"
-		  weight: 10
-	after:
-		- name: "OpenBSD"
-		  url: "https://openbsd.org"
-		  weight: 10
+  before:
+      - name: "Sample"
+        url: "https://github.com"
+        weight: 10
+  after:
+      - name: "OpenBSD"
+        url: "https://openbsd.org"
+        weight: 10

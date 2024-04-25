@@ -1,5 +1,5 @@
 ---
-title: "{{ .Name | humanize | title }}"
+title: "{{ replace .Name "-" " " | humanize | title }}"
 date: {{ .Date }}
 # bookComments: false
 # bookSearchExclude: false

@@ -1,5 +1,5 @@
 ---
-title: "{{ .Name | humanize | title }}"
+title: "{{ replace .Name "-" " " | humanize | title }}"
 weight: 1
 # bookFlatSection: false
 # bookToc: true
