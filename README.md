@@ -165,11 +165,13 @@ Contributions are welcome! Please make an issue or pull request if there are any
 
 ## Things to fix:
 
+- [ ] Refactor project to run out of `/themes/amethyst`, rather than `./`
 - [ ] Interactive Graph Missing
 - [ ] Unify `/docs` and `/quartz` partials into one homogenous partial directory.
 - [ ] Creation of css partial to load css, rather than having it dumped in the user's assets folder
 - [ ] Ditto for JavaScript.
 - [ ] configure a hook for hugo to run obsidian-hugo automatically before build.
+- [ ] Ensure scripts for static are being loaded during site generation.
 - [ ] And many more...
 
 ## Credits
