@@ -1,41 +1,30 @@
+<script>
+!function(r,u,m,b,l,e){
+	r._Rumble=b,r[b]||(r[b]=function(){
+		(r[b]._=r[b]._||[]).push(arguments);
+		if(r[b]._.length==1){
+			l=u.createElement(m),
+			e=u.getElementsByTagName(m)[0],
+			l.async=1,
+			l.src="https://rumble.com/embedJS/u5goo1"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)
+		}})}(window, document, "script", "Rumble");
+</script>
 {{ if .IsNamedParams }}
 	{{ with .Get "id" }}
-	<script>
-	!function(r,u,m,b,l,e){
-		r._Rumble=b,r[b]||(r[b]=function(){
-			(r[b]._=r[b]._||[]).push(arguments);
-			if(r[b]._.length==1){
-				l=u.createElement(m),
-				e=u.getElementsByTagName(m)[0],
-				l.async=1,
-				l.src="https://rumble.com/embedJS/{{ . }}"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)
-			}})}(window, document, "script", "Rumble");
-	</script>
+		<div id="rumble_{{ . }}"></div>
+		<script>
+			Rumble("play", {"video":"{{ . }}","div":"rumble_{{ . }}"});
+		</script>
 	{{ else }}
   		{{ errorf "The %q shortcode requires a 'name' parameter. See %s" .Name .Position }}
-	{{ end }}
-	<div id="rumble_vfoswx"></div>
-	<script>
-	Rumble("play", {"video":"vfoswx","div":"rumble_vfoswx"});
-	</script>
+	{{ end }}	
 {{ else }}
 	{{ with .Get 0 }}
-	<script>
-	!function(r,u,m,b,l,e){
-		r._Rumble=b,r[b]||(r[b]=function(){
-			(r[b]._=r[b]._||[]).push(arguments);
-			if(r[b]._.length==1){
-				l=u.createElement(m),
-				e=u.getElementsByTagName(m)[0],
-				l.async=1,
-				l.src="https://rumble.com/embedJS/{{ . }}"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)
-			}})}(window, document, "script", "Rumble");
-	</script>
+		<div id="rumble_{{ . }}"></div>
+		<script>
+			Rumble("play", {"video":"{{ . }}","div":"rumble_{{ . }}"});
+		</script>
 	{{ else }}
   		{{ errorf "The %q shortcode requires a 'name' parameter. See %s" .Name .Position }}
 	{{ end }}
-	<div id="rumble_vfoswx"></div>
-	<script>
-	Rumble("play", {"video":"vfoswx","div":"rumble_vfoswx"});
-	</script>
 {{ end }}
